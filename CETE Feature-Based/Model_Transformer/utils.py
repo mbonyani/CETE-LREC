@@ -160,7 +160,7 @@ class Dataset(object):
             val_file (String): path to validation file
         '''
 
-        NLP = spacy.load('en')
+        NLP = spacy.load('en_core_web_sm')
         tokenizer = lambda sent: [x.text for x in NLP.tokenizer(sent) if x.text != " "]
         from nltk.tokenize import sent_tokenize, word_tokenize
         from nltk.corpus import stopwords
