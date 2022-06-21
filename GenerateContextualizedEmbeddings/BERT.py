@@ -41,7 +41,7 @@ def read_data(filename):
             #res.append([lines[3], lines[4], float(lines[0])])
 
     return res
-x=read_data("trec_all_raw.txt")
+x=read_data("wiki_all.txt")
 #for i in x:
 #    print(i)
 d_model=768
@@ -98,23 +98,23 @@ hf1.close()
 ii=0
 j=0
 
-hf2 = h5py.File('berttrecr2.h5', 'w')
-for i in range(0,56082,32):
-    result = bert_embedding(str2[i:min(i+32,56082)])
-    length = len(result)
-    for j in range(0,length):
-        r=result[j][1:]
-        r=np.array(r)
-        val = 25 - int((r.size) / d_model)
-        y = np.zeros((1, val, d_model))
-        yy = r
-        xx = np.append(yy, y, axis=1)
-        if(j==0):
-            x=xx
-        else:
-            x = np.append(x, xx, axis=0)
-    hf2.create_dataset('dataset_' + str(i), data=x)
-    f2.write(str(ii)+" "+str(i)+"\n")
-    ii=ii+1
-hf2.close()
+# hf2 = h5py.File('berttrecr2.h5', 'w')
+# for i in range(0,56082,32):
+#     result = bert_embedding(str2[i:min(i+32,56082)])
+#     length = len(result)
+#     for j in range(0,length):
+#         r=result[j][1:]
+#         r=np.array(r)
+#         val = 25 - int((r.size) / d_model)
+#         y = np.zeros((1, val, d_model))
+#         yy = r
+#         xx = np.append(yy, y, axis=1)
+#         if(j==0):
+#             x=xx
+#         else:
+#             x = np.append(x, xx, axis=0)
+#     hf2.create_dataset('dataset_' + str(i), data=x)
+#     f2.write(str(ii)+" "+str(i)+"\n")
+#     ii=ii+1
+# hf2.close()
 
