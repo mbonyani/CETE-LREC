@@ -66,8 +66,8 @@ str1 = str1.split('\n')
 str2 = str2.split('\n')
 print(len(str1))
 
-ctx = mx.gpu(0)
-bert_embedding = BertEmbedding(ctx=ctx)
+#ctx = mx.gpu(0)
+bert_embedding = BertEmbedding()
 #bert_embedding = BertEmbedding(ctx=ctx, model='bert_24_1024_16', dataset_name='book_corpus_wiki_en_uncased')
 
 j=0
