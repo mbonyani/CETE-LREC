@@ -20,7 +20,7 @@ class Config(object):
     model=0 #0 for transformer, 1 for blstm
     #emb="../data/bert"
     EmbeddingType = "Contextualized" #Otherwise, EmbeddingType="Contextualized" or "Baseline"
-    emb="E:/H5PY Data/BERT_FILE/bert"
+    emb="../data/"
     #data="yahoo"
     #data = "semeval2017"
     data="wiki"
