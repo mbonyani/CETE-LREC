@@ -258,8 +258,10 @@ def evaluate_model(model, iterator, filename):
                 label = batch.label.cuda()
                 # print(x2)
             else:
-                x1 = batch.text1()
-                x2 = batch.text2()
+                x1 = batch.text1
+                x2 = batch.text2
+                idx = batch.index
+                label = batch.label
             y_pred = model(x1, x2, idx)
             # print(y_pred.data)
             config = Config()

@@ -232,10 +232,11 @@ class Transformer(nn.Module):
                 #x=batch.text.cuda()
                 y = (batch.label ).type(torch.cuda.FloatTensor)
                 idx = (batch.index).type(torch.cuda.FloatTensor)
-            #else:
-                #x1 = batch.text1()
-                #x2 = batch.text2()
-                #y = (batch.label ).type(torch.FloatTensor)
+            else:
+                x1 = batch.text1
+                x2 = batch.text2
+                y = (batch.label ).type(torch.FloatTensor)
+                idx = (batch.index).type(torch.FloatTensor)
             #print(x2)
 
             y_pred = self.__call__(x1, x2, idx, y)
