@@ -20,7 +20,7 @@ def return_file_name():
 def return_emb1(k, j):
     config = Config()
     outfile = config.emb + config.data + "1"
-    hf = h5py.File(outfile + ".h5", 'r')
+    hf = h5py.File("/content/CETE-LREC/GenerateContextualizedEmbeddings/trecr1.h5", 'r')
     kk = k
     if (k % 32 != 0):
         k = k - (k % 32)
@@ -42,7 +42,7 @@ def return_emb1(k, j):
 def return_emb2(k, j):
     config = Config()
     outfile = config.emb + config.data + "2"
-    hf = h5py.File(outfile + ".h5", 'r')
+    hf = h5py.File("/content/CETE-LREC/GenerateContextualizedEmbeddings/trecr2.h5", 'r')
     kk = k
     if (k % 32 != 0):
         k = k - (k % 32)
