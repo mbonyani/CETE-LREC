@@ -70,51 +70,51 @@ print(len(str1))
 bert_embedding = BertEmbedding()
 #bert_embedding = BertEmbedding(ctx=ctx, model='bert_24_1024_16', dataset_name='book_corpus_wiki_en_uncased')
 
-j=0
-hf1=h5py.File('berttrecr1.h5','w')
-ii=0
-for i in range(0,56082,32):
-    result = bert_embedding(str1[i:min(i+32,56082)])
-    length = len(result)
-    #print(length)
-    for j in range(0,length):
-        r=result[j][1:]
-        r=np.array(r)
-        val = 25 - int((r.size) / d_model)
-        y = np.zeros((1, val, d_model))
-        yy = r
-        xx=np.append(yy, y, axis=1)
-        if(j==0):
-            x=xx
-        else:
-            x = np.append(x, xx, axis=0)
-    hf1.create_dataset('dataset_' + str(i), data=x)
-    f1.write(str(ii) + " " + str(i) + "\n")
-    ii=ii+1
-j=0
-hf1.close()
-
-
-ii=0
-j=0
-
-# hf2 = h5py.File('berttrecr2.h5', 'w')
+# j=0
+# hf1=h5py.File('berttrecr1.h5','w')
+# ii=0
 # for i in range(0,56082,32):
-#     result = bert_embedding(str2[i:min(i+32,56082)])
+#     result = bert_embedding(str1[i:min(i+32,56082)])
 #     length = len(result)
+#     #print(length)
 #     for j in range(0,length):
 #         r=result[j][1:]
 #         r=np.array(r)
 #         val = 25 - int((r.size) / d_model)
 #         y = np.zeros((1, val, d_model))
 #         yy = r
-#         xx = np.append(yy, y, axis=1)
+#         xx=np.append(yy, y, axis=1)
 #         if(j==0):
 #             x=xx
 #         else:
 #             x = np.append(x, xx, axis=0)
-#     hf2.create_dataset('dataset_' + str(i), data=x)
-#     f2.write(str(ii)+" "+str(i)+"\n")
+#     hf1.create_dataset('dataset_' + str(i), data=x)
+#     f1.write(str(ii) + " " + str(i) + "\n")
 #     ii=ii+1
-# hf2.close()
+# j=0
+# hf1.close()
+
+
+ii=0
+j=0
+
+hf2 = h5py.File('berttrecr2.h5', 'w')
+for i in range(0,56082,32):
+    result = bert_embedding(str2[i:min(i+32,56082)])
+    length = len(result)
+    for j in range(0,length):
+        r=result[j][1:]
+        r=np.array(r)
+        val = 25 - int((r.size) / d_model)
+        y = np.zeros((1, val, d_model))
+        yy = r
+        xx = np.append(yy, y, axis=1)
+        if(j==0):
+            x=xx
+        else:
+            x = np.append(x, xx, axis=0)
+    hf2.create_dataset('dataset_' + str(i), data=x)
+    f2.write(str(ii)+" "+str(i)+"\n")
+    ii=ii+1
+hf2.close()
 
