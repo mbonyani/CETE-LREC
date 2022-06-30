@@ -178,7 +178,13 @@ class Transformer(nn.Module):
 
         final_out1 = final_feature_map1
         final_out2 = final_feature_map2
-
+        
+        if final_out1.shape[0]!=final_out2.shape[0]:
+           a = min(final_out1.shape[0] ,final_out2.shape[0])
+           final_out1 = final_feature_map1[:a]
+           final_out2 = final_feature_map2[:a]
+           
+    
         output=self.cos(final_out1 , final_out2)
 
         # for Ablation studies, uncomment the following (line 88 to 99)
